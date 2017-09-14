@@ -1,5 +1,6 @@
 package com.dood.kotlinjava.services;
 
+import com.dood.kotlinjava.model.SimpleKotlinPojo;
 import com.dood.kotlinjava.model.SimplePojo;
 import com.dood.kotlinjava.model.Status;
 import org.slf4j.Logger;
@@ -7,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.time.temporal.TemporalAmount;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;

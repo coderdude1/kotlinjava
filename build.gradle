@@ -1,16 +1,20 @@
 buildscript {
     ext {
         springBootVersion = '1.5.7.RELEASE'
+        kotlin_version = '1.1.4-3'
+
     }
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
 apply plugin: 'java'
+apply plugin: 'kotlin'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -31,10 +35,19 @@ dependencies {
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'
     compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.7.0'
 
+    //kotlin - note there are a bunch of other plugins that might be interesting
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
     /*
     without this jackson will serialize the whole date object into json
      */
     compile 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
+
+    //not sure if this is necessary, do I need to add other things? this is from a kotlin project I am playing with
+    sourceSets {
+        main.kotlin.srcDirs += 'src'
+    }
 }
