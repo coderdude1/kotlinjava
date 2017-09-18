@@ -2,6 +2,7 @@ package com.dood.kotlinjava.controller;
 
 import com.dood.kotlinjava.model.SimpleKotlinPojo;
 import com.dood.kotlinjava.model.SimplePojo;
+import com.dood.kotlinjava.services.SimpleKotlinPojoFactory;
 import com.dood.kotlinjava.services.SimplePojoFactory;
 import io.swagger.annotations.Api;
 import org.slf4j.Logger;
@@ -16,23 +17,26 @@ public class SimplePojoController {
     private static final Logger LOG = LoggerFactory.getLogger(SimplePojoController.class);
 
     private SimplePojoFactory simplePojoFactory;
+//    private SimpleKotlinPojoFactory simpleKotlinPojoFactory;
 
     @Autowired
+//    public SimplePojoController(SimplePojoFactory simplePojoFactory, SimpleKotlinPojoFactory simpleKotlinPojoFactory) {
     public SimplePojoController(SimplePojoFactory simplePojoFactory) {
         this.simplePojoFactory = simplePojoFactory;
+//        this.simpleKotlinPojoFactory = simpleKotlinPojoFactory;
     }
 
     @RequestMapping(value = "/getSome", method = RequestMethod.GET)
     public SimplePojo pojo() {
         SimplePojo simplePojo = simplePojoFactory.createSimplePojo();
-        LOG.debug("getSome called.  Object={}", simplePojo);
+        LOG.info("getSome called.  Object={}", simplePojo);
         return simplePojo;
     }
 
-    @RequestMapping(value = "/getSomeKotlin", method = RequestMethod.GET)
-    public SimpleKotlinPojo kotlinPojo() {
-        SimpleKotlinPojo simplePojo = simplePojoFactory.createSimplePojo();
-        LOG.debug("getSome called.  Object={}", simplePojo);
+    @RequestMapping(value = "/getSomeKotlinFromJava", method = RequestMethod.GET)
+    public SimpleKotlinPojo kotlinPojoFromJavaService() {
+        SimpleKotlinPojo simplePojo = simplePojoFactory.createSimpleKotlinPojo();
+        LOG.info("getSomeKotlin called.  Object={}", simplePojo);
         return simplePojo;
     }
 }
