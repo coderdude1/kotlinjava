@@ -17,13 +17,12 @@ public class SimplePojoController {
     private static final Logger LOG = LoggerFactory.getLogger(SimplePojoController.class);
 
     private SimplePojoFactory simplePojoFactory;
-//    private SimpleKotlinPojoFactory simpleKotlinPojoFactory;
+    private SimpleKotlinPojoFactory simpleKotlinPojoFactory;
 
     @Autowired
-//    public SimplePojoController(SimplePojoFactory simplePojoFactory, SimpleKotlinPojoFactory simpleKotlinPojoFactory) {
-    public SimplePojoController(SimplePojoFactory simplePojoFactory) {
+    public SimplePojoController(SimplePojoFactory simplePojoFactory, SimpleKotlinPojoFactory simpleKotlinPojoFactory) {
         this.simplePojoFactory = simplePojoFactory;
-//        this.simpleKotlinPojoFactory = simpleKotlinPojoFactory;
+        this.simpleKotlinPojoFactory = simpleKotlinPojoFactory;
     }
 
     @RequestMapping(value = "/getSome", method = RequestMethod.GET)
@@ -39,4 +38,11 @@ public class SimplePojoController {
         LOG.info("getSomeKotlin called.  Object={}", simplePojo);
         return simplePojo;
     }
+//
+//    @RequestMapping(value = "/getSomeKotlinFromKotlinService", method = RequestMethod.GET)
+//    public SimpleKotlinPojo kotlinPojoFromKotlinService() {
+//        SimpleKotlinPojo simplePojo = simpleKotlinPojoFactory.();
+//        LOG.info("getSomeKotlin called.  Object={}", simplePojo);
+//        return simplePojo;
+//    }
 }

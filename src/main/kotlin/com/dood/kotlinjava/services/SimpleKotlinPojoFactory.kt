@@ -5,11 +5,10 @@ import org.springframework.stereotype.Service
 
 @Service //experimenting with a kotlin service and spring
 class SimpleKotlinPojoFactory {
-//
-//    fun createSimpleKotlinPojo(): SimpleKotlinPojo {
-////        return null //cant return null since we declare  atype
-//
-//        return new SimpleKotlinPojo()
-//    }
+
+    fun createSimpleKotlinPojo(): SimpleKotlinPojo {
+        SimpleKotlinPojo simpleKotlinPojo = new SimpleKotlinPojo.
+        return new
+    }
 
 }
